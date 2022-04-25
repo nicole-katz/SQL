@@ -1,0 +1,52 @@
+CREATE TABLE singers (id INTEGER PRIMARY KEY, name TEXT, song TEXT, age INTEGER);
+
+INSERT INTO singers VALUES (1,'Kelly Clarkson','Because of You', 45);
+INSERT INTO singers VALUES (2,'Ariana Grande','7 Rings', 25);
+INSERT INTO singers VALUES (3,'Drake','Gods Plan', 35);
+INSERT INTO singers VALUES (4,'Adele','Go Easy on Me', 37);
+INSERT INTO singers VALUES (5,'Ed Sheeran','Shivers', 25);
+INSERT INTO singers VALUES (6,'Justin Bieber','Ghost', 27);
+INSERT INTO singers VALUES (7,'Doja Cat','Need to Know', 25);
+INSERT INTO singers VALUES (8,'Dua Lipa','Levitating', 23);
+INSERT INTO singers VALUES (9,'Post Malone','One Right Now', 27);
+INSERT INTO singers VALUES (10,'Alicia Keys','Fallin', 38);
+INSERT INTO singers VALUES (11,'Lenny Kravitz','Again', 55);
+INSERT INTO singers VALUES (12,'Jennifer Lopez','Love Dont Cost a Thing', 50);
+INSERT INTO singers VALUES (13,'Usher','U Remind Me', 45);
+INSERT INTO singers VALUES (14,'Mary J Blige','Family Affair', 55);
+INSERT INTO singers VALUES (15,'Nelly Furtado','Im like a bird', 38);
+INSERT INTO singers VALUES (16,'Sting','Roxanne', 65);
+INSERT INTO singers VALUES (17,'Adam Lambert','If I had you', 40);
+INSERT INTO singers VALUES (18,'Kesha','Tik Tok', 34);
+INSERT INTO singers VALUES (19,'Lady Gaga','Applause', 35);
+INSERT INTO singers VALUES (20,'Bruno Mars','Just the way you are', 35);
+
+CREATE TABLE singer_location (id INTEGER PRIMARY KEY, name TEXT, hometown TEXT, country TEXT);
+
+INSERT INTO singer_location VALUES (1,'Kelly Clarkson','Dallas', 'USA');
+INSERT INTO singer_location VALUES (2,'Ariana Grande','Los Angeles', 'USA');
+INSERT INTO singer_location VALUES (3,'Drake','Alburta', 'Canada');
+INSERT INTO singer_location VALUES (4,'Adele','London', 'UK');
+INSERT INTO singer_location VALUES (5,'Ed Sheeran','Edinburgh', 'Scotland');
+INSERT INTO singer_location VALUES (6,'Justin Bieber','Toronto', 'Canada');
+INSERT INTO singer_location VALUES (7,'Doja Cat','Miami', 'USA');
+INSERT INTO singer_location VALUES (8,'Dua Lipa','Tulsa', 'USA');
+INSERT INTO singer_location VALUES (9,'Post Malone','Tampa', 'USA');
+INSERT INTO singer_location VALUES (10,'Alicia Keys','New York City', 'USA');
+INSERT INTO singer_location VALUES (11,'Lenny Kravitz','Newark', 'USA');
+INSERT INTO singer_location VALUES (12,'Jennifer Lopez','Bronx', 'USA');
+INSERT INTO singer_location VALUES (13,'Usher','Newark', 'USA');
+INSERT INTO singer_location VALUES (14,'Mary J Blige','Los Angeles', 'USA');
+INSERT INTO singer_location VALUES (15,'Nelly Furtado','Miami', 'USA');
+INSERT INTO singer_location VALUES (16,'Sting','London', 'UK');
+INSERT INTO singer_location VALUES (17,'Adam Lambert','New York City', 'USA');
+INSERT INTO singer_location VALUES (18,'Kesha','Philadelphia', 'USA');
+INSERT INTO singer_location VALUES (19,'Lady Gaga','Syracuse', 'USA');
+INSERT INTO singer_location VALUES (20,'Bruno Mars','Honululu', 'USA');
+
+
+SELECT s1.name, s1.age, s2.country
+FROM singers as s1
+INNER JOIN singer_location as s2
+ON s1.name = s2.name
+ORDER BY s1.age
