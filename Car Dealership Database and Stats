@@ -1,0 +1,20 @@
+CREATE TABLE store (id INTEGER PRIMARY KEY, make TEXT, model TEXT, price INTEGER, type TEXT);
+INSERT INTO store VALUES (1, "Hyundai", "Elantra", 25000, "Coupe");
+INSERT INTO store VALUES (2, "Mazda", "CX-9", 50000, "SUV");
+INSERT INTO store VALUES (3, "Kia", "Optima", 15000, "Sedan");
+INSERT INTO store VALUES (4, "Mazda", "Miata", 20000, "Coupe");
+INSERT INTO store VALUES (5, "Ford", "Maverick", 10000, "Truck");
+INSERT INTO store VALUES (6, "Toyota", "Prius", 40000, "Sedan");
+INSERT INTO store VALUES (7, "Chevrolet", "Cavalier", 15000, "Sedan");
+INSERT INTO store VALUES (8, "Honda", "CR-V", 17000, "SUV");
+INSERT INTO store VALUES (9, "Ford", "Escape", 20000, "SUV");
+INSERT INTO store VALUES (10, "Dodge", "Ram", 37000, "Truck");
+INSERT INTO store VALUES (11, "Dodge", "Charger", 34000, "Coupe");
+INSERT INTO store VALUES (12, "Lincoln", "Navigator", 23000, "SUV");
+INSERT INTO store VALUES (13, "Volkswagen", "Beetle", 22000, "Sedan");
+INSERT INTO store VALUES (14, "Porsche", "Cayanne", 200000, "Coupe");
+INSERT INTO store VALUES (15, "Hyundai", "Sante Fe", 21000, "SUV");
+
+SELECT * FROM store ORDER BY price;
+SELECT make,MAX(price) FROM store ORDER BY price;
+SELECT make,MIN(price) FROM store ORDER BY price;
