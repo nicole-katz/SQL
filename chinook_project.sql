@@ -51,10 +51,12 @@ SELECT t.name, i.invoicelineid
 FROM chinook.invoice_items as i
 JOIN chinook.tracks as t ON i.TrackId = t.TrackId;
 
-/* Show purchased track name and artist name with each invoice line item*/
-SELECT t.name, t.composer, i.invoicelineid
-FROM chinook.invoice_items as i
-JOIN chinook.tracks as t ON i.TrackId = t.TrackId;
+/* Show purchased track name and artist name with each invoice line item */
+SELECT t.Name AS 'Track Name', ar.Name AS 'Artist', ii.InvoiceLineId
+FROM chinook.invoice_items AS ii
+JOIN chinook.tracks AS t ON ii.TrackId = t.TrackId
+JOIN chinook.albums AS al ON t.AlbumId = al.AlbumId
+JOIN chinook.artists AS ar ON al.ArtistId = ar.ArtistId;
 
 /* Show all Tracks, Album name, Media Type, and Genre*/
 SELECT t.name AS 'Track Name', m.Name AS 'Media Type', g.Name AS 'Genre', a.title AS 'Album Title'
@@ -70,18 +72,19 @@ FROM chinook.employees as e
 JOIN chinook.customers as c ON c.SupportRepId = e.EmployeeId
 JOIN chinook.invoices as i ON i.CustomerId = c.CustomerId
 WHERE e.Title = 'Sales Support Agent'
-GROUP BY e.FirstName;
+GROUP BY e.EmployeeId, e.FirstName, e.LastName;
 
-# Show the Sales Agent that made the most in sales in 2009
+/* Show the Sales Agent that made the most in sales in 2009 */
 SELECT e.FirstName, e.LastName,
 ROUND(SUM(i.Total), 2) AS 'Total Sales'
-FROM chinook.employees as e
-JOIN chinook.customers as c on c.SupportRepId = e.EmployeeId
-JOIN chinook.invoices as I on i.CustomerId = c.CustomerId
+FROM chinook.employees AS e
+JOIN chinook.customers AS c ON c.SupportRepId = e.EmployeeId
+JOIN chinook.invoices AS i ON i.CustomerId = c.CustomerId
 WHERE e.Title = 'Sales Support Agent'
-AND i.InvoiceDate LIKE '2009%'
-GROUP BY e.FirstName
-ORDER BY (ROUND(SUM(i.Total), 2)) DESC LIMIT 1;
+AND i.InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
+GROUP BY e.EmployeeId, e.FirstName, e.LastName
+ORDER BY SUM(i.Total) DESC
+LIMIT 1;
 
 /* Update an existing customer's information*/
 UPDATE Customers
